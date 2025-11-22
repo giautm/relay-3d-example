@@ -12,6 +12,7 @@ export type ServerSideQuery = {
   params: RequestParameters;
   variables: Variables;
   response: any;
+  modules?: string[];
 };
 
 export async function fetchQuery(
@@ -19,7 +20,8 @@ export async function fetchQuery(
   variables: Variables,
 ): Promise<ServerSideQuery> {
   const response = await networkFetch(params.id, variables, params.text);
-  return {params, variables, response};
+  const modules = response.extensions?.modules || [];
+  return {params, variables, response, modules};
 }
 
 export function buildQueryRefs(

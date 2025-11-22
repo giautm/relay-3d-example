@@ -1,4 +1,5 @@
 import {fetchQuery} from '../../../../lib/relay/getServerSideProps';
+import {loadServerModules} from '../../../../lib/relay/serverModuleLoader';
 import preLoadedQuery from '../../../../__generated__/TypeBasedDirectoryPageQuery.graphql';
 import DirectoryClient from './DirectoryClient';
 
@@ -29,6 +30,11 @@ export default async function Directory({
     sortField: search.sortKey ?? 'name',
     sortDirection: (search.sortOrder as 'ASC' | 'DESC') ?? 'ASC',
   });
+
+  // Pre-load 3D modules on the server for Server 3D
+  if (preloadedQuery.modules) {
+    await loadServerModules(preloadedQuery.modules);
+  }
 
   return <DirectoryClient preloadedQuery={preloadedQuery} />;
 }
