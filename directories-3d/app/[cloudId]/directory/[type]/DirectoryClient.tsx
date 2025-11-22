@@ -1,6 +1,6 @@
 'use client';
 
-import {Fragment, useMemo, useEffect} from 'react';
+import {Fragment, useMemo} from 'react';
 import {graphql, usePreloadedQuery, useRelayEnvironment} from 'react-relay';
 
 import RelayMatchContainer from '../../../../components/common/RelayMatchContainer';
@@ -10,7 +10,6 @@ import {
   TypeBasedDirectoryPageQuery,
 } from '../../../../__generated__/TypeBasedDirectoryPageQuery.graphql';
 import {buildQueryRefs, ServerSideQuery} from '../../../../lib/relay/getServerSideProps';
-import {registerClientModules} from '../../../../lib/clientModuleRegistration';
 
 const query = graphql`
   query TypeBasedDirectoryPageQuery(
@@ -62,13 +61,6 @@ export default function DirectoryClient({
   preloadedQuery: ServerSideQuery;
 }) {
   const environment = useRelayEnvironment();
-  
-  // Register modules from server response before hydration
-  useEffect(() => {
-    if (preloadedQuery.modules) {
-      registerClientModules(preloadedQuery.modules);
-    }
-  }, [preloadedQuery.modules]);
 
   const queryRef = useMemo(() => {
     const queryRefs = buildQueryRefs(environment, {query: preloadedQuery});

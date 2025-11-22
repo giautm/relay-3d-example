@@ -1,6 +1,6 @@
 'use client';
 
-import {Fragment, useMemo, useEffect} from 'react';
+import {Fragment, useMemo} from 'react';
 import {graphql, usePreloadedQuery, useRelayEnvironment} from 'react-relay';
 
 import RelayMatchContainer from '../../../../components/common/RelayMatchContainer';
@@ -8,7 +8,6 @@ import {Content} from '../../../../components/common/LayoutComponents';
 import Nav from '../../../../components/common/Nav';
 import {issuesPageQuery} from '../../../../__generated__/issuesPageQuery.graphql';
 import {buildQueryRefs, ServerSideQuery} from '../../../../lib/relay/getServerSideProps';
-import {registerClientModules} from '../../../../lib/clientModuleRegistration';
 
 const query = graphql`
   query issuesPageQuery($cloudId: ID!, $id: ID!, $jql: String, $page: Int)
@@ -40,13 +39,6 @@ export default function IssuesClient({
   preloadedQuery: ServerSideQuery;
 }) {
   const environment = useRelayEnvironment();
-
-  // Register modules from server response before hydration
-  useEffect(() => {
-    if (preloadedQuery.modules) {
-      registerClientModules(preloadedQuery.modules);
-    }
-  }, [preloadedQuery.modules]);
 
   const queryRef = useMemo(() => {
     const queryRefs = buildQueryRefs(environment, {query: preloadedQuery});

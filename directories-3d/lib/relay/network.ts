@@ -8,7 +8,7 @@ import {
 
 import {registerLoader} from '../moduleLoader';
 
-function registerModuleLoaders(modules: string[]) {
+export function registerModuleLoaders(modules: string[]) {
   modules.forEach((module) => {
     if (module.endsWith('$normalization.graphql')) {
       registerLoader(module, () => import(`../../__generated__/${module}`));
