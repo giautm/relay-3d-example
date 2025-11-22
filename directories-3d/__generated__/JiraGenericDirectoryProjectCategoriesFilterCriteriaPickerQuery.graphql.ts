@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<d1d0de799faa50110521757cf3d599f5>>
+ * @generated SignedSource<<6ed93087de568cd636f9f81bb7ead6ed>>
+ * @relayHash 3dc8b17bd1bd04954b59c8fe8373140a
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,10 +9,12 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ConcreteRequest, Query } from 'relay-runtime';
+// @relayRequestID 29f6d7f114b76ad5ca743e72ef5df9d0dc718b1de43eed4a3c9bc94ec0994a44
+
+import { ConcreteRequest } from 'relay-runtime';
 export type JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery$variables = {
   cloudId: string;
-  searchText?: string | null;
+  searchText?: string | null | undefined;
 };
 export type JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery$data = {
   readonly jira: {
@@ -21,11 +24,11 @@ export type JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery$data 
           readonly categoryId: string;
           readonly id: string;
           readonly name: string;
-        } | null;
-      } | null> | null;
-      readonly totalCount: number | null;
-    } | null;
-  } | null;
+        } | null | undefined;
+      } | null | undefined> | null | undefined;
+      readonly totalCount: number | null | undefined;
+    } | null | undefined;
+  } | null | undefined;
 };
 export type JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery = {
   response: JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery$data;
@@ -153,12 +156,11 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "3dc8b17bd1bd04954b59c8fe8373140a",
-    "id": null,
+    "id": "29f6d7f114b76ad5ca743e72ef5df9d0dc718b1de43eed4a3c9bc94ec0994a44",
     "metadata": {},
     "name": "JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery",
     "operationKind": "query",
-    "text": "query JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery(\n  $cloudId: ID!\n  $searchText: String\n) {\n  jira {\n    projectCategories(cloudId: $cloudId, first: 10, searchText: $searchText) {\n      edges {\n        node {\n          id\n          categoryId\n          name\n        }\n      }\n      totalCount\n    }\n  }\n}\n"
+    "text": null
   }
 };
 })();

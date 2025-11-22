@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3d62f46fbd538262de1fed1519dce32d>>
+ * @generated SignedSource<<be3178368ffb3e9d5d7b16a162dd6605>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,11 +8,11 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraDirectoryJqlBuilderAdvancedCriteria_content$data = {
-  readonly jql: string | null;
-  readonly type: string | null;
+  readonly jql: string | null | undefined;
+  readonly type: string | null | undefined;
   readonly " $fragmentType": "JiraDirectoryJqlBuilderAdvancedCriteria_content";
 };
 export type JiraDirectoryJqlBuilderAdvancedCriteria_content$key = {

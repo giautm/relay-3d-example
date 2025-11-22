@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8942ffcee07d03e1ada46815e6da79f0>>
+ * @generated SignedSource<<2e34c9d1e3ffba18b554193a840849a2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,20 +8,20 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraGenericActionsField_content$data = {
   readonly actions: {
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly renderer: {
-          readonly canPerform: boolean | null;
+          readonly canPerform: boolean | null | undefined;
           readonly id: string;
-          readonly name: string | null;
-        } | null;
-      } | null;
-    } | null> | null;
-  } | null;
+          readonly name: string | null | undefined;
+        } | null | undefined;
+      } | null | undefined;
+    } | null | undefined> | null | undefined;
+  } | null | undefined;
   readonly " $fragmentType": "JiraGenericActionsField_content";
 };
 export type JiraGenericActionsField_content$key = {

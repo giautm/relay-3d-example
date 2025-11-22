@@ -5,7 +5,7 @@ export async function getPreloadedQuery(
   {params}: ConcreteRequest,
   variables: Variables,
 ) {
-  const response = await networkFetch(null, variables, params.text);
+  const response = await networkFetch(params.id, variables, params.text);
   return {
     params,
     variables,

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6edb52e9ddedae19f8b144a614fa0ecc>>
+ * @generated SignedSource<<a14766f82c78b9d19ef5b2fe187052d7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,14 +8,14 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 export type SortDirection = "ASC" | "DESC" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
 export type JiraDirectoryDefaultResultHeader_content$data = {
-  readonly isSortable: boolean | null;
-  readonly sortDirection: SortDirection | null;
-  readonly sortKey: string | null;
-  readonly title: string | null;
+  readonly isSortable: boolean | null | undefined;
+  readonly sortDirection: SortDirection | null | undefined;
+  readonly sortKey: string | null | undefined;
+  readonly title: string | null | undefined;
   readonly " $fragmentType": "JiraDirectoryDefaultResultHeader_content";
 };
 export type JiraDirectoryDefaultResultHeader_content$key = {

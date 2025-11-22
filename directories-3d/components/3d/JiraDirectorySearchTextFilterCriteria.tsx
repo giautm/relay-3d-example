@@ -39,7 +39,7 @@ const JiraDirectorySearchTextFilterCriteria = ({
       url.searchParams.get('contains') !== debouncedKeyword &&
       debouncedKeyword !== null
     ) {
-      url.searchParams.set('contains', debouncedKeyword);
+      url.searchParams.set('contains', debouncedKeyword as string);
       router.push(url);
     }
   }, [debouncedKeyword, router]);

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<11aaa98d1c0b4a78ae48840c1f062986>>
+ * @generated SignedSource<<00c1e71b23bf4e891efbc2758b83414a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,12 +8,12 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraGenericFavouriteField_content$data = {
   readonly favoriteInfo: {
-    readonly isFavorite: boolean | null;
-  } | null;
+    readonly isFavorite: boolean | null | undefined;
+  } | null | undefined;
   readonly " $fragmentType": "JiraGenericFavouriteField_content";
 };
 export type JiraGenericFavouriteField_content$key = {

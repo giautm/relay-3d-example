@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<39656d7ddf45dbd1599847761e81b334>>
+ * @generated SignedSource<<ae93c121e9e14235cc6b2d993ce481b0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,27 +8,27 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 export type JiraIconStyle = "CIRCLE" | "SQUARE" | "%future added value";
 export type JiraLabelDecoration = "NORMAL" | "STRIKE_THRU" | "%future added value";
 export type JiraTextTransform = "UPPER" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
 export type JiraGenericField_content$data = {
-  readonly color: string | null;
+  readonly color: string | null | undefined;
   readonly icon: {
-    readonly altText: string | null;
+    readonly altText: string | null | undefined;
     readonly image: {
-      readonly medium: string | null;
-    } | null;
-    readonly style: JiraIconStyle | null;
-  } | null;
+      readonly medium: string | null | undefined;
+    } | null | undefined;
+    readonly style: JiraIconStyle | null | undefined;
+  } | null | undefined;
   readonly label: {
-    readonly altText: string | null;
-    readonly decoration: JiraLabelDecoration | null;
-    readonly linkUrl: any | null;
-    readonly stringValue: string | null;
-    readonly textTransform: JiraTextTransform | null;
-  } | null;
+    readonly altText: string | null | undefined;
+    readonly decoration: JiraLabelDecoration | null | undefined;
+    readonly linkUrl: any | null | undefined;
+    readonly stringValue: string | null | undefined;
+    readonly textTransform: JiraTextTransform | null | undefined;
+  } | null | undefined;
   readonly " $fragmentType": "JiraGenericField_content";
 };
 export type JiraGenericField_content$key = {

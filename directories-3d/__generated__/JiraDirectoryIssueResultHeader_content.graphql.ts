@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<8eb5490e260e41ef37d1782bb43f9078>>
+ * @generated SignedSource<<a623c642f45cfda3febeb271bf0ae99c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,12 +8,12 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraDirectoryIssueResultHeader_content$data = {
-  readonly isSortable: boolean | null;
-  readonly sortKey: string | null;
-  readonly title: string | null;
+  readonly isSortable: boolean | null | undefined;
+  readonly sortKey: string | null | undefined;
+  readonly title: string | null | undefined;
   readonly " $fragmentType": "JiraDirectoryIssueResultHeader_content";
 };
 export type JiraDirectoryIssueResultHeader_content$key = {

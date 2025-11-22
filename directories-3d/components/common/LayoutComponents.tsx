@@ -21,7 +21,7 @@ export function Title(props: any) {
   );
 }
 
-type ButtonProps = JSX.IntrinsicElements['button'] & {size: 'small'};
+type ButtonProps = React.JSX.IntrinsicElements['button'] & {size: 'small'};
 export function Button({size, ...props}: ButtonProps) {
   const sizeClasses = size === 'small' ? 'px-2' : 'py-3 px-8 font-medium';
   return (

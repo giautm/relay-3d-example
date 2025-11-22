@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<7415feb49c1ad621f268f19557f13b38>>
+ * @generated SignedSource<<e9ddee74522356e68904bc835bc660e0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,10 +8,10 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraGenericDirectoryCreateItem_directory$data = {
-  readonly canPerform: boolean | null;
+  readonly canPerform: boolean | null | undefined;
   readonly " $fragmentType": "JiraGenericDirectoryCreateItem_directory";
 };
 export type JiraGenericDirectoryCreateItem_directory$key = {

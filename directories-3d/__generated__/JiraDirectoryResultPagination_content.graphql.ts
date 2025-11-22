@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c12c99c7cdd0b978d9d0dcd82fc975e7>>
+ * @generated SignedSource<<d80e14286212608bd85ec8da38e1cabf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,10 +8,10 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraDirectoryResultPagination_content$data = {
-  readonly totalCount: number | null;
+  readonly totalCount: number | null | undefined;
   readonly " $fragmentType": "JiraDirectoryResultPagination_content";
 };
 export type JiraDirectoryResultPagination_content$key = {

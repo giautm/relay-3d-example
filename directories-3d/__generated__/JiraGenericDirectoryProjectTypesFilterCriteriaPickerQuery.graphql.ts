@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<613f4b62a6f2025a4cba032df63972b6>>
+ * @generated SignedSource<<27aee83a1dc203a2633175571a5c97bf>>
+ * @relayHash 466667b82fe2ff412d0176b13654e9cd
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,11 +9,13 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ConcreteRequest, Query } from 'relay-runtime';
+// @relayRequestID ff697c58bc6b7e545386f320b1ef8f5cdbe021fd9c98b6cca8b103f695b8b92f
+
+import { ConcreteRequest } from 'relay-runtime';
 export type JiraProjectType = "BUSINESS" | "PRODUCT_DISCOVERY" | "SERVICE_DESK" | "SOFTWARE" | "UNKNOWN" | "%future added value";
 export type JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery$variables = {
   cloudId: string;
-  searchText?: string | null;
+  searchText?: string | null | undefined;
 };
 export type JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery$data = {
   readonly jira: {
@@ -22,11 +25,11 @@ export type JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery$data = {
           readonly displayName: string;
           readonly id: string;
           readonly type: JiraProjectType;
-        } | null;
-      } | null> | null;
-      readonly totalCount: number | null;
-    } | null;
-  } | null;
+        } | null | undefined;
+      } | null | undefined> | null | undefined;
+      readonly totalCount: number | null | undefined;
+    } | null | undefined;
+  } | null | undefined;
 };
 export type JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery = {
   response: JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery$data;
@@ -149,12 +152,11 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "466667b82fe2ff412d0176b13654e9cd",
-    "id": null,
+    "id": "ff697c58bc6b7e545386f320b1ef8f5cdbe021fd9c98b6cca8b103f695b8b92f",
     "metadata": {},
     "name": "JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery",
     "operationKind": "query",
-    "text": "query JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery(\n  $cloudId: ID!\n  $searchText: String\n) {\n  jira {\n    projectTypes(cloudId: $cloudId, searchText: $searchText) {\n      edges {\n        node {\n          id\n          type\n          displayName\n        }\n      }\n      totalCount\n    }\n  }\n}\n"
+    "text": null
   }
 };
 })();

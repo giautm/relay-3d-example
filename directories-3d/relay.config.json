@@ -3,5 +3,9 @@
   "schema": "./lib/schema/schema.graphql",
   "artifactDirectory": "./__generated__",
   "excludes": ["**/.next/**", "**/node_modules/**", "**/schema/**"],
-  "language": "typescript"
+  "language": "typescript",
+  "persistConfig": {
+    "algorithm": "SHA256",
+    "file": "./pages/api/persisted_queries.json"
+  }
 }

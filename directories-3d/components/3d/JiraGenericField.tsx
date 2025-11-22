@@ -33,7 +33,7 @@ const JiraGenericField = ({
   if (data?.icon && data?.icon?.image) {
     iconValue = (
       // eslint-disable-next-line @next/next/no-img-element
-      <img
+      (<img
         className={`inline${
           data?.icon?.style === 'CIRCLE' ? ' rounded-full' : ''
         }`}
@@ -42,7 +42,7 @@ const JiraGenericField = ({
         title={data?.icon?.altText ?? ''}
         height={24}
         width={24}
-      />
+      />)
     );
   }
   if (data?.color) {

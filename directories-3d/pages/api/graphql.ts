@@ -1,8 +1,8 @@
 import {ApolloServer} from '@apollo/server';
 import {startServerAndCreateNextHandler} from '@as-integrations/next';
-
 import {GraphQLScalarType} from 'graphql';
 import {connectionFromArray, type ConnectionArguments} from 'graphql-relay';
+
 // @ts-ignore Cannot find module or its corresponding type declarations
 import typeDefs from '../../lib/schema/schema.graphql';
 import {PROJECT_DIRECTORY_CONFIG} from '../../lib/mocks/projectsSearchData';
@@ -10,6 +10,7 @@ import {ISSUE_DIRECTORY_CONFIG} from '../../lib/mocks/issueSearchData';
 import {type Issue} from '../../lib/mocks/types';
 import {getSortInfoFromJql} from '../../lib/utils';
 import {projectFilter, issueSorter} from '../../lib/schema/utils';
+import persistedQueries from './persisted_queries.json';
 
 const JSDependencyScalar = new GraphQLScalarType({
   name: 'JSDependency',
@@ -25,20 +26,18 @@ const JSDependencyScalar = new GraphQLScalarType({
   },
 });
 
-const seenDataDrivenDependencies = new Set();
-const dataDrivenDependencies = {
-  reset() {
-    seenDataDrivenDependencies.clear();
-  },
-  getModules() {
-    return Array.from(seenDataDrivenDependencies);
-  },
+type GraphQLContext = {
+  dataDrivenDependencies: Set<string>;
 };
 
-const JSFieldResolver = (args: {module: string}) => {
-  seenDataDrivenDependencies.add(args.module);
-  return args.module;
+const JSFieldResolver = (args: {module?: string}, context?: GraphQLContext) => {
+  if (args?.module) {
+    context?.dataDrivenDependencies?.add(args.module);
+    return args.module;
+  }
+  return null;
 };
+
 interface Criteria {
   id: string;
   type: 'KEYWORD' | 'MULTISELECT' | 'SELECT' | 'JQL_BUILDER_ADVANCED';
@@ -290,12 +289,12 @@ const resolvers = {
                         return firstValue === secondValue
                           ? 0
                           : sortDirection === 'DESC'
-                          ? firstValue > secondValue
-                            ? -1
-                            : 1
-                          : firstValue < secondValue
-                          ? -1
-                          : 1;
+                            ? firstValue > secondValue
+                              ? -1
+                              : 1
+                            : firstValue < secondValue
+                              ? -1
+                              : 1;
                       })
                       .map((project) => ({
                         __typename: 'JiraGenericDirectoryResultValues',
@@ -646,17 +645,31 @@ const resolvers = {
   },
 };
 
-const apolloServer = new ApolloServer({
+const apolloServer = new ApolloServer<GraphQLContext>({
   typeDefs,
   resolvers,
   introspection: true,
+  persistedQueries: {
+    cache: {
+      get: async function (key: string) {
+        if (key.startsWith('apq:')) {
+          key = key.substring(4);
+        }
+        return (persistedQueries as any)[key];
+      },
+      set: async () => {},
+      delete: async () => {},
+    },
+  },
   plugins: [
     {
       async requestDidStart() {
         return {
           async willSendResponse(requestContext) {
-            const {response} = requestContext;
-            const dddModules = dataDrivenDependencies.getModules();
+            const {contextValue, response} = requestContext;
+            const dddModules = contextValue?.dataDrivenDependencies
+              ? Array.from(contextValue.dataDrivenDependencies)
+              : [];
             if (
               dddModules.length > 0 &&
               response.body.kind === 'single' &&
@@ -674,4 +687,8 @@ const apolloServer = new ApolloServer({
   ],
 });
 
-export default startServerAndCreateNextHandler(apolloServer);
+export default startServerAndCreateNextHandler(apolloServer, {
+  context: async () => ({
+    dataDrivenDependencies: new Set<string>(),
+  }),
+});

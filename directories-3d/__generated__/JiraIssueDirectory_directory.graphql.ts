@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<605f7a8f54108a23be3c4e50f9daef20>>
+ * @generated SignedSource<<e77a46b887bfd2c9b37c5fd5ae5088f9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,37 +12,37 @@
 // @dataDrivenDependency JiraIssueDirectory_directory.pageActions.edges.node.renderer {"branches":{"JiraCreateEntityAction":{"component":"JiraGenericDirectoryCreateItem","fragment":"JiraGenericDirectoryCreateItem_directory$normalization.graphql"}},"plural":true}
 // @dataDrivenDependency JiraIssueDirectory_directory.result {"branches":{"JiraGenericDirectoryResult":{"component":"JiraGenericDirectoryResult","fragment":"JiraGenericDirectoryResults_content$normalization.graphql"}},"plural":false}
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraIssueDirectory_directory$data = {
-  readonly description: string | null;
+  readonly description: string | null | undefined;
   readonly filterCriteria: {
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly renderer: {
-          readonly __fragmentPropName?: string | null;
-          readonly __module_component?: string | null;
+          readonly __fragmentPropName?: string | null | undefined;
+          readonly __module_component?: string | null | undefined;
           readonly " $fragmentSpreads": FragmentRefs<"JiraDirectoryJqlBuilderAdvancedCriteria_content">;
-        } | null;
-      } | null;
-    } | null> | null;
-  } | null;
+        } | null | undefined;
+      } | null | undefined;
+    } | null | undefined> | null | undefined;
+  } | null | undefined;
   readonly pageActions: {
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly renderer: {
-          readonly __fragmentPropName?: string | null;
-          readonly __module_component?: string | null;
+          readonly __fragmentPropName?: string | null | undefined;
+          readonly __module_component?: string | null | undefined;
           readonly " $fragmentSpreads": FragmentRefs<"JiraGenericDirectoryCreateItem_directory">;
-        } | null;
-      } | null;
-    } | null> | null;
-  } | null;
+        } | null | undefined;
+      } | null | undefined;
+    } | null | undefined> | null | undefined;
+  } | null | undefined;
   readonly result: {
-    readonly __fragmentPropName?: string | null;
-    readonly __module_component?: string | null;
+    readonly __fragmentPropName?: string | null | undefined;
+    readonly __module_component?: string | null | undefined;
     readonly " $fragmentSpreads": FragmentRefs<"JiraGenericDirectoryResults_content">;
-  } | null;
+  } | null | undefined;
   readonly title: string;
   readonly " $fragmentType": "JiraIssueDirectory_directory";
 };

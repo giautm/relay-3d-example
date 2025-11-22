@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3072482f7ee187436f60f7e72f0e3848>>
+ * @generated SignedSource<<f3c60f3330991fe1c696e945598ee1e8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,7 +8,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 export type JiraProjectType = "BUSINESS" | "PRODUCT_DISCOVERY" | "SERVICE_DESK" | "SOFTWARE" | "UNKNOWN" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
 export type JiraGenericDirectoryProjectTypesFilterCriteria_content$data = {
@@ -16,7 +16,7 @@ export type JiraGenericDirectoryProjectTypesFilterCriteria_content$data = {
     readonly displayName: string;
     readonly id: string;
     readonly type: JiraProjectType;
-  } | null> | null;
+  } | null | undefined> | null | undefined;
   readonly " $fragmentType": "JiraGenericDirectoryProjectTypesFilterCriteria_content";
 };
 export type JiraGenericDirectoryProjectTypesFilterCriteria_content$key = {

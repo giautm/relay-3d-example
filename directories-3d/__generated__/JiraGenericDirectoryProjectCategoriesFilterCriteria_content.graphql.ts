@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2859c31ea39f8b209c56620b320aa2fd>>
+ * @generated SignedSource<<ee12081dde72a10fd6b209b4e1bf8776>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,14 +8,14 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraGenericDirectoryProjectCategoriesFilterCriteria_content$data = {
   readonly selectedItems: ReadonlyArray<{
     readonly categoryId: string;
     readonly id: string;
     readonly name: string;
-  } | null> | null;
+  } | null | undefined> | null | undefined;
   readonly " $fragmentType": "JiraGenericDirectoryProjectCategoriesFilterCriteria_content";
 };
 export type JiraGenericDirectoryProjectCategoriesFilterCriteria_content$key = {

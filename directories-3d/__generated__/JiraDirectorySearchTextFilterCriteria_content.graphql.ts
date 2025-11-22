@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1b65471e958e990dfbf90f4cff1434eb>>
+ * @generated SignedSource<<e79f1b8ea0301090c8cb5827765cfb52>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,11 +8,11 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraDirectorySearchTextFilterCriteria_content$data = {
-  readonly searchText: string | null;
-  readonly type: string | null;
+  readonly searchText: string | null | undefined;
+  readonly type: string | null | undefined;
   readonly " $fragmentType": "JiraDirectorySearchTextFilterCriteria_content";
 };
 export type JiraDirectorySearchTextFilterCriteria_content$key = {

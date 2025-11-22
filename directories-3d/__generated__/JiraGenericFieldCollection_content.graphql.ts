@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<af05a2940a1cd0d52551aa4b33b73f05>>
+ * @generated SignedSource<<4b2ecd70c98d6be2be1abd83cd2e9010>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,20 +10,20 @@
 
 // @dataDrivenDependency JiraGenericFieldCollection_content.fields.edges.node {"branches":{"JiraGenericField":{"component":"JiraGenericField","fragment":"JiraGenericField_content$normalization.graphql"}},"plural":true}
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraGenericFieldCollection_content$data = {
-  readonly delimiter: string | null;
+  readonly delimiter: string | null | undefined;
   readonly fields: {
     readonly edges: ReadonlyArray<{
       readonly node: {
-        readonly __fragmentPropName: string | null;
-        readonly __module_component: string | null;
+        readonly __fragmentPropName: string | null | undefined;
+        readonly __module_component: string | null | undefined;
         readonly " $fragmentSpreads": FragmentRefs<"JiraGenericField_content">;
-      } | null;
-    } | null> | null;
-    readonly totalCount: number | null;
-  } | null;
+      } | null | undefined;
+    } | null | undefined> | null | undefined;
+    readonly totalCount: number | null | undefined;
+  } | null | undefined;
   readonly " $fragmentType": "JiraGenericFieldCollection_content";
 };
 export type JiraGenericFieldCollection_content$key = {

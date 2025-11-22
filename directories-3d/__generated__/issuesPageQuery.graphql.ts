@@ -1,5 +1,6 @@
 /**
- * @generated SignedSource<<6dd9c445f47b23a9296d53ddcab7e0c8>>
+ * @generated SignedSource<<b373393efa0e857115b0e171d52aa3b4>>
+ * @relayHash 45212d9c724f38bf524ce335f863b0a3
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -8,27 +9,28 @@
 /* eslint-disable */
 // @ts-nocheck
 
+// @relayRequestID 2f2379aeb9b644b524544c3b119901c101014c7c8fa20959b913d73d951b6dd2
 // @dataDrivenDependency issuesPageQuery.jira.directory {"branches":{"JiraIssueDirectory":{"component":"JiraIssueDirectory","fragment":"JiraIssueDirectory_directory$normalization.graphql"}},"plural":false}
 // @indirectDataDrivenDependency JiraIssueDirectory_directory.filterCriteria.edges.node.renderer {"branches":{"JiraDirectoryJqlBuilderAdvancedCriteria":{"component":"JiraDirectoryJqlBuilderAdvancedCriteria","fragment":"JiraDirectoryJqlBuilderAdvancedCriteria_content$normalization.graphql"}},"plural":true}
 // @indirectDataDrivenDependency JiraIssueDirectory_directory.pageActions.edges.node.renderer {"branches":{"JiraCreateEntityAction":{"component":"JiraGenericDirectoryCreateItem","fragment":"JiraGenericDirectoryCreateItem_directory$normalization.graphql"}},"plural":true}
 // @indirectDataDrivenDependency JiraIssueDirectory_directory.result {"branches":{"JiraGenericDirectoryResult":{"component":"JiraGenericDirectoryResult","fragment":"JiraGenericDirectoryResults_content$normalization.graphql"}},"plural":false}
 
-import { ConcreteRequest, Query } from 'relay-runtime';
+import { ConcreteRequest } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type issuesPageQuery$variables = {
   cloudId: string;
   id: string;
-  jql?: string | null;
-  page?: number | null;
+  jql?: string | null | undefined;
+  page?: number | null | undefined;
 };
 export type issuesPageQuery$data = {
   readonly jira: {
     readonly directory: {
-      readonly __fragmentPropName?: string | null;
-      readonly __module_component?: string | null;
+      readonly __fragmentPropName?: string | null | undefined;
+      readonly __module_component?: string | null | undefined;
       readonly " $fragmentSpreads": FragmentRefs<"JiraIssueDirectory_directory">;
     };
-  } | null;
+  } | null | undefined;
 };
 export type issuesPageQuery = {
   response: issuesPageQuery$data;
@@ -200,16 +202,18 @@ return {
     ]
   },
   "params": {
-    "cacheID": "45212d9c724f38bf524ce335f863b0a3",
-    "id": null,
+    "id": "2f2379aeb9b644b524544c3b119901c101014c7c8fa20959b913d73d951b6dd2",
     "metadata": {},
     "name": "issuesPageQuery",
     "operationKind": "query",
-    "text": "query issuesPageQuery(\n  $cloudId: ID!\n  $id: ID!\n  $jql: String\n  $page: Int\n) {\n  jira {\n    directory(cloudId: $cloudId, id: $id, filter: {criteria: [{id: \"JiraDirectoryJqlBuilderAdvancedCriteria\", type: JQL_BUILDER_ADVANCED, value: $jql}], page: $page}, supported: [\"JiraIssueDirectory\"]) {\n      __typename\n      ... on JiraIssueDirectory {\n        ...JiraIssueDirectory_directory\n        __module_operation_issuesPageQuery: js(module: \"JiraIssueDirectory_directory$normalization.graphql\", id: \"issuesPageQuery.jira.directory\")\n        __module_component_issuesPageQuery: js(module: \"JiraIssueDirectory\", id: \"issuesPageQuery.jira.directory\")\n      }\n    }\n  }\n}\n\nfragment JiraDirectoryDefaultResultHeader_content on JiraDirectoryDefaultResultHeader {\n  title\n  isSortable\n  sortDirection\n  sortKey\n}\n\nfragment JiraDirectoryIssueResultHeader_content on JiraDirectoryIssueResultHeader {\n  title\n  isSortable\n  sortKey\n}\n\nfragment JiraDirectoryJqlBuilderAdvancedCriteria_content on JiraDirectoryJqlBuilderAdvancedCriteria {\n  type\n  jql\n}\n\nfragment JiraDirectoryResultPagination_content on HasTotalCount {\n  __isHasTotalCount: __typename\n  totalCount\n}\n\nfragment JiraGenericActionsField_content on JiraGenericActionsField {\n  actions {\n    edges {\n      node {\n        renderer {\n          __typename\n          __isJiraAction: __typename\n          id\n          name\n          canPerform\n        }\n      }\n    }\n  }\n}\n\nfragment JiraGenericDirectoryCreateItem_directory on JiraCreateEntityAction {\n  canPerform\n}\n\nfragment JiraGenericDirectoryResults_content on JiraGenericDirectoryResult {\n  headers {\n    edges {\n      node {\n        __typename\n        renderer(supported: [\"JiraDirectoryDefaultResultHeader\", \"JiraDirectoryIssueResultHeader\"]) {\n          __typename\n          ... on JiraDirectoryDefaultResultHeader {\n            ...JiraDirectoryDefaultResultHeader_content\n            __module_operation_JiraGenericDirectoryResults_content_headers: js(module: \"JiraDirectoryDefaultResultHeader_content$normalization.graphql\", id: \"JiraGenericDirectoryResults_content.headers.edges.node.renderer\")\n            __module_component_JiraGenericDirectoryResults_content_headers: js(module: \"JiraDirectoryDefaultResultHeader\", id: \"JiraGenericDirectoryResults_content.headers.edges.node.renderer\")\n          }\n          ... on JiraDirectoryIssueResultHeader {\n            ...JiraDirectoryIssueResultHeader_content\n            __module_operation_JiraGenericDirectoryResults_content_headers: js(module: \"JiraDirectoryIssueResultHeader_content$normalization.graphql\", id: \"JiraGenericDirectoryResults_content.headers.edges.node.renderer\")\n            __module_component_JiraGenericDirectoryResults_content_headers: js(module: \"JiraDirectoryIssueResultHeader\", id: \"JiraGenericDirectoryResults_content.headers.edges.node.renderer\")\n          }\n        }\n      }\n    }\n  }\n  rows {\n    edges {\n      node {\n        __typename\n        columns {\n          edges {\n            node {\n              __typename\n              renderer(supported: [\"JiraGenericFavouriteField\", \"JiraGenericActionsField\", \"JiraGenericField\", \"JiraGenericFieldCollection\"]) {\n                __typename\n                ... on JiraGenericFavouriteField {\n                  ...JiraGenericFavouriteField_content\n                  __module_operation_JiraGenericDirectoryResults_content_columns: js(module: \"JiraGenericFavouriteField_content$normalization.graphql\", id: \"JiraGenericDirectoryResults_content.rows.edges.node.columns.edges.node.renderer\")\n                  __module_component_JiraGenericDirectoryResults_content_columns: js(module: \"JiraGenericFavouriteField\", id: \"JiraGenericDirectoryResults_content.rows.edges.node.columns.edges.node.renderer\")\n                }\n                ... on JiraGenericActionsField {\n                  ...JiraGenericActionsField_content\n                  __module_operation_JiraGenericDirectoryResults_content_columns: js(module: \"JiraGenericActionsField_content$normalization.graphql\", id: \"JiraGenericDirectoryResults_content.rows.edges.node.columns.edges.node.renderer\")\n                  __module_component_JiraGenericDirectoryResults_content_columns: js(module: \"JiraGenericActionsField\", id: \"JiraGenericDirectoryResults_content.rows.edges.node.columns.edges.node.renderer\")\n                }\n                ... on JiraGenericField {\n                  ...JiraGenericField_content\n                  __module_operation_JiraGenericDirectoryResults_content_columns: js(module: \"JiraGenericField_content$normalization.graphql\", id: \"JiraGenericDirectoryResults_content.rows.edges.node.columns.edges.node.renderer\")\n                  __module_component_JiraGenericDirectoryResults_content_columns: js(module: \"JiraGenericField\", id: \"JiraGenericDirectoryResults_content.rows.edges.node.columns.edges.node.renderer\")\n                }\n                ... on JiraGenericFieldCollection {\n                  ...JiraGenericFieldCollection_content\n                  __module_operation_JiraGenericDirectoryResults_content_columns: js(module: \"JiraGenericFieldCollection_content$normalization.graphql\", id: \"JiraGenericDirectoryResults_content.rows.edges.node.columns.edges.node.renderer\")\n                  __module_component_JiraGenericDirectoryResults_content_columns: js(module: \"JiraGenericFieldCollection\", id: \"JiraGenericDirectoryResults_content.rows.edges.node.columns.edges.node.renderer\")\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n    ...JiraDirectoryResultPagination_content\n  }\n}\n\nfragment JiraGenericFavouriteField_content on JiraGenericFavouriteField {\n  favoriteInfo {\n    isFavorite\n    id\n  }\n}\n\nfragment JiraGenericFieldCollection_content on JiraGenericFieldCollection {\n  delimiter\n  fields(cloudId: \"\", first: 1) {\n    edges {\n      node {\n        ...JiraGenericField_content\n        __module_operation_JiraGenericFieldCollection_content: js(module: \"JiraGenericField_content$normalization.graphql\", id: \"JiraGenericFieldCollection_content.fields.edges.node\")\n        __module_component_JiraGenericFieldCollection_content: js(module: \"JiraGenericField\", id: \"JiraGenericFieldCollection_content.fields.edges.node\")\n      }\n    }\n    totalCount\n  }\n}\n\nfragment JiraGenericField_content on JiraGenericField {\n  icon {\n    image {\n      medium\n    }\n    altText\n    style\n  }\n  label {\n    stringValue\n    decoration\n    linkUrl\n    textTransform\n    altText\n  }\n  color\n}\n\nfragment JiraIssueDirectory_directory on JiraIssueDirectory {\n  title\n  description\n  pageActions {\n    edges {\n      node {\n        renderer(supported: [\"JiraCreateEntityAction\"]) {\n          __typename\n          ... on JiraCreateEntityAction {\n            ...JiraGenericDirectoryCreateItem_directory\n            __module_operation_JiraIssueDirectory_directory_createDirectoryItem: js(module: \"JiraGenericDirectoryCreateItem_directory$normalization.graphql\", id: \"JiraIssueDirectory_directory.pageActions.edges.node.renderer\")\n            __module_component_JiraIssueDirectory_directory_createDirectoryItem: js(module: \"JiraGenericDirectoryCreateItem\", id: \"JiraIssueDirectory_directory.pageActions.edges.node.renderer\")\n          }\n          id\n        }\n      }\n    }\n  }\n  filterCriteria {\n    edges {\n      node {\n        renderer(supported: [\"JiraDirectoryJqlBuilderAdvancedCriteria\"]) {\n          __typename\n          ... on JiraDirectoryJqlBuilderAdvancedCriteria {\n            ...JiraDirectoryJqlBuilderAdvancedCriteria_content\n            __module_operation_JiraIssueDirectory_directory_filterCriteria: js(module: \"JiraDirectoryJqlBuilderAdvancedCriteria_content$normalization.graphql\", id: \"JiraIssueDirectory_directory.filterCriteria.edges.node.renderer\")\n            __module_component_JiraIssueDirectory_directory_filterCriteria: js(module: \"JiraDirectoryJqlBuilderAdvancedCriteria\", id: \"JiraIssueDirectory_directory.filterCriteria.edges.node.renderer\")\n          }\n        }\n      }\n    }\n  }\n  result {\n    __typename\n    ... on JiraGenericDirectoryResult {\n      ...JiraGenericDirectoryResults_content\n      __module_operation_JiraIssueDirectory_directory_result: js(module: \"JiraGenericDirectoryResults_content$normalization.graphql\", id: \"JiraIssueDirectory_directory.result\")\n      __module_component_JiraIssueDirectory_directory_result: js(module: \"JiraGenericDirectoryResult\", id: \"JiraIssueDirectory_directory.result\")\n    }\n  }\n}\n"
+    "text": null
   }
 };
 })();
 
 (node as any).hash = "a4943613d9d822ff4f97ce2873316aea";
+
+import { PreloadableQueryRegistry } from 'relay-runtime';
+PreloadableQueryRegistry.set(node.params.id, node);
 
 export default node;

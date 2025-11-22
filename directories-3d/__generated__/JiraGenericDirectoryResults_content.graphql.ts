@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<022b2aac03145ee2e0bb9cc23e225b57>>
+ * @generated SignedSource<<b47f02d9f5d8e4b580b1ef137372a3c8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,20 +11,20 @@
 // @dataDrivenDependency JiraGenericDirectoryResults_content.headers.edges.node.renderer {"branches":{"JiraDirectoryDefaultResultHeader":{"component":"JiraDirectoryDefaultResultHeader","fragment":"JiraDirectoryDefaultResultHeader_content$normalization.graphql"},"JiraDirectoryIssueResultHeader":{"component":"JiraDirectoryIssueResultHeader","fragment":"JiraDirectoryIssueResultHeader_content$normalization.graphql"}},"plural":true}
 // @dataDrivenDependency JiraGenericDirectoryResults_content.rows.edges.node.columns.edges.node.renderer {"branches":{"JiraGenericActionsField":{"component":"JiraGenericActionsField","fragment":"JiraGenericActionsField_content$normalization.graphql"},"JiraGenericFavouriteField":{"component":"JiraGenericFavouriteField","fragment":"JiraGenericFavouriteField_content$normalization.graphql"},"JiraGenericField":{"component":"JiraGenericField","fragment":"JiraGenericField_content$normalization.graphql"},"JiraGenericFieldCollection":{"component":"JiraGenericFieldCollection","fragment":"JiraGenericFieldCollection_content$normalization.graphql"}},"plural":true}
 
-import { Fragment, ReaderFragment } from 'relay-runtime';
+import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type JiraGenericDirectoryResults_content$data = {
   readonly headers: {
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly renderer: {
-          readonly __fragmentPropName?: string | null;
-          readonly __module_component?: string | null;
+          readonly __fragmentPropName?: string | null | undefined;
+          readonly __module_component?: string | null | undefined;
           readonly " $fragmentSpreads": FragmentRefs<"JiraDirectoryDefaultResultHeader_content" | "JiraDirectoryIssueResultHeader_content">;
-        } | null;
-      } | null;
-    } | null> | null;
-  } | null;
+        } | null | undefined;
+      } | null | undefined;
+    } | null | undefined> | null | undefined;
+  } | null | undefined;
   readonly rows: {
     readonly edges: ReadonlyArray<{
       readonly node: {
@@ -32,17 +32,17 @@ export type JiraGenericDirectoryResults_content$data = {
           readonly edges: ReadonlyArray<{
             readonly node: {
               readonly renderer: {
-                readonly __fragmentPropName?: string | null;
-                readonly __module_component?: string | null;
+                readonly __fragmentPropName?: string | null | undefined;
+                readonly __module_component?: string | null | undefined;
                 readonly " $fragmentSpreads": FragmentRefs<"JiraGenericActionsField_content" | "JiraGenericFavouriteField_content" | "JiraGenericFieldCollection_content" | "JiraGenericField_content">;
-              } | null;
-            } | null;
-          } | null> | null;
-        } | null;
-      } | null;
-    } | null> | null;
+              } | null | undefined;
+            } | null | undefined;
+          } | null | undefined> | null | undefined;
+        } | null | undefined;
+      } | null | undefined;
+    } | null | undefined> | null | undefined;
     readonly " $fragmentSpreads": FragmentRefs<"JiraDirectoryResultPagination_content">;
-  } | null;
+  } | null | undefined;
   readonly " $fragmentType": "JiraGenericDirectoryResults_content";
 };
 export type JiraGenericDirectoryResults_content$key = {

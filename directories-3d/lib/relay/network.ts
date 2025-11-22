@@ -51,19 +51,21 @@ export async function networkFetch(id: any, variables: any, query: any) {
   const url = IS_SERVER
     ? process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}/api/graphql`
-      : process.env.GRAPHQL_ENDPOINT ?? 'http://localhost:3000/api/graphql'
+      : (process.env.GRAPHQL_ENDPOINT ?? 'http://localhost:3000/api/graphql')
     : `${window.location.origin}/api/graphql`;
+  const body = query
+    ? JSON.stringify({query, variables})
+    : JSON.stringify({
+        variables,
+        extensions: {persistedQuery: {version: 1, sha256Hash: id}},
+      });
   const response = await fetch(url, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      id,
-      variables,
-      query,
-    }),
+    body,
   });
   return response.json();
 }
