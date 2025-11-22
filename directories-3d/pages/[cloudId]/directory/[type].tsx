@@ -1,22 +1,17 @@
 import {Fragment} from 'react';
-import {graphql, usePreloadedQuery} from 'react-relay';
+import {graphql, GraphQLTaggedNode, usePreloadedQuery} from 'react-relay';
+import {PreloadedQuery} from 'react-relay';
+import {GetServerSideProps} from 'next';
+import Head from 'next/head';
+
+import {fetchQuery} from '../../../lib/relay/getServerSideProps';
 import RelayMatchContainer from '../../../components/common/RelayMatchContainer';
 import {Content} from '../../../components/common/LayoutComponents';
 import Nav from '../../../components/common/Nav';
-import {getPreloadedQuery} from '../../../lib/relay/getServerSideProps';
-import Head from 'next/head';
 import preLoadedQuery, {
   TypeBasedDirectoryPageQuery,
 } from '../../../__generated__/TypeBasedDirectoryPageQuery.graphql';
-import {GetServerSideProps} from 'next';
-import {PreloadedQuery} from 'react-relay';
-
-interface DirectoryProps {
-  queryRefs: {
-    query: PreloadedQuery<TypeBasedDirectoryPageQuery>;
-  };
-  cloudId: string;
-}
+import {ConcreteRequest} from 'relay-runtime';
 
 const query = graphql`
   query TypeBasedDirectoryPageQuery(
@@ -62,6 +57,13 @@ const query = graphql`
   }
 `;
 
+interface DirectoryProps {
+  queryRefs: {
+    query: PreloadedQuery<TypeBasedDirectoryPageQuery>;
+  };
+  cloudId: string;
+}
+
 export default function Directory(props: DirectoryProps) {
   const {jira} = usePreloadedQuery<TypeBasedDirectoryPageQuery>(
     query,
@@ -85,22 +87,20 @@ export default function Directory(props: DirectoryProps) {
     </Fragment>
   );
 }
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return {
-    props: {
-      preloadedQueries: {
-        query: await getPreloadedQuery(preLoadedQuery, {
-          cloudId: ctx.query.cloudId,
-          id: ctx.query.type,
-          searchText: ctx.query.contains ?? null,
-          selectedTypes:
-            ctx.query.selectedProjectType?.toString().split(',') ?? null,
-          selectedCategory: ctx.query.selectedCategory ?? null,
-          page: ctx.query.page ? parseInt(ctx.query.page.toString()) : 1,
-          sortField: ctx.query.sortKey ?? 'name',
-          sortDirection: ctx.query.sortOrder ?? 'ASC',
-        }),
-      },
+
+export const getServerSideProps: GetServerSideProps = async ({query}) => ({
+  props: {
+    preloadedQueries: {
+      query: await fetchQuery(preLoadedQuery, {
+        cloudId: query.cloudId,
+        id: query.type,
+        searchText: query.contains ?? null,
+        selectedTypes: query.selectedProjectType?.toString().split(',') ?? null,
+        selectedCategory: query.selectedCategory ?? null,
+        page: query.page ? parseInt(query.page.toString()) : 1,
+        sortField: query.sortKey ?? 'name',
+        sortDirection: query.sortOrder ?? 'ASC',
+      }),
     },
-  };
-};
+  },
+});

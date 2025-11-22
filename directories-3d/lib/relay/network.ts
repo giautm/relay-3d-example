@@ -1,52 +1,28 @@
-import {Network, QueryResponseCache} from 'relay-runtime';
+import {
+  CacheConfig,
+  Network,
+  QueryResponseCache,
+  RequestParameters,
+  Variables,
+} from 'relay-runtime';
 
 import {registerLoader} from '../moduleLoader';
 
-const ONE_MINUTE_IN_MS = 60 * 1000;
-
-export function createNetwork() {
-  const responseCache = new QueryResponseCache({
-    size: 100,
-    ttl: ONE_MINUTE_IN_MS,
+function registerModuleLoaders(modules: string[]) {
+  modules.forEach((module) => {
+    if (module.endsWith('$normalization.graphql')) {
+      registerLoader(module, () => import(`../../__generated__/${module}`));
+    } else {
+      registerLoader(module, () => import(`../../components/3d/${module}`));
+    }
   });
-
-  async function fetchResponse(
-    params: {operationKind?: any; id?: any; text?: any},
-    variables: undefined,
-    cacheConfig: {force: any} | undefined,
-  ) {
-    const {id, text} = params;
-
-    const isQuery = params.operationKind === 'query';
-    const forceFetch = cacheConfig && cacheConfig.force;
-    if (isQuery && !forceFetch) {
-      const fromCache = null; //responseCache.get(id, variables); uncomment this when using persisted queries
-      if (fromCache != null) {
-        return Promise.resolve(fromCache);
-      }
-    }
-
-    return networkFetch(id, variables, text);
-  }
-
-  async function fetchFn(...args: any[]) {
-    // @ts-ignore A spread argument must either have a tuple type or be passed to a rest parameter.
-    const response = await fetchResponse(...args);
-
-    if (Array.isArray(response.extensions?.modules)) {
-      registerModuleLoaders(response.extensions.modules);
-    }
-
-    return response;
-  }
-
-  const network = Network.create(fetchFn);
-  // @ts-ignore Property 'responseCache' does not exist on type 'Network'
-  network.responseCache = responseCache;
-  return network;
 }
 
-export async function networkFetch(id: any, variables: any, query: any) {
+export async function networkFetch(
+  id: string | null,
+  variables: Variables,
+  query: string | null,
+) {
   const IS_SERVER = typeof window === typeof undefined;
   const url = IS_SERVER
     ? process.env.VERCEL_URL
@@ -70,12 +46,27 @@ export async function networkFetch(id: any, variables: any, query: any) {
   return response.json();
 }
 
-function registerModuleLoaders(modules: string[]) {
-  modules.forEach((module) => {
-    if (module.endsWith('$normalization.graphql')) {
-      registerLoader(module, () => import(`../../__generated__/${module}`));
-    } else {
-      registerLoader(module, () => import(`../../components/3d/${module}`));
+export function createNetwork(cache: QueryResponseCache) {
+  async function fetchResponse(
+    params: RequestParameters,
+    variables: Variables,
+    cacheConfig: CacheConfig,
+  ) {
+    const {id, text, operationKind} = params;
+    if (id != null && operationKind === 'query' && !cacheConfig.force) {
+      const fromCache = cache.get(id, variables);
+      if (fromCache != null) {
+        return Promise.resolve(fromCache);
+      }
     }
+    return networkFetch(id, variables, text);
+  }
+  const network = Network.create(async (params, variables, cacheConfig) => {
+    const response = await fetchResponse(params, variables, cacheConfig);
+    if (Array.isArray(response.extensions?.modules)) {
+      registerModuleLoaders(response.extensions.modules);
+    }
+    return response;
   });
+  return network;
 }

@@ -54,12 +54,14 @@ const JiraIssueDirectory = ({
       <div className="lg:flex lg:items-center lg:justify-between mt-3 mb-3">
         <Head>
           <title>{data.title}</title>
-          <meta name="description" content="{data.title} directory page" />
+          <meta name="description" content={`${data.title} directory page`} />
         </Head>
         <Title>{data.title}</Title>
         <div>
           {data.pageActions ? (
-            <RelayMatchContainer match={data.pageActions} />
+            data.pageActions.edges?.map(e => (
+              <RelayMatchContainer match={e?.node?.renderer} />
+            ))
           ) : (
             <span>❌No create permission❌</span>
           )}

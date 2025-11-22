@@ -1,15 +1,16 @@
 import {Fragment} from 'react';
 import {graphql, usePreloadedQuery} from 'react-relay';
+import {PreloadedQuery} from 'react-relay';
+import {GetServerSideProps} from 'next';
+import Head from 'next/head';
+
 import RelayMatchContainer from '../../../components/common/RelayMatchContainer';
 import {Content} from '../../../components/common/LayoutComponents';
 import Nav from '../../../components/common/Nav';
-import {getPreloadedQuery} from '../../../lib/relay/getServerSideProps';
-import Head from 'next/head';
+import {fetchQuery} from '../../../lib/relay/getServerSideProps';
 import preLoadedQuery, {
   issuesPageQuery,
 } from '../../../__generated__/issuesPageQuery.graphql';
-import {GetServerSideProps} from 'next';
-import {PreloadedQuery} from 'react-relay';
 
 interface DirectoryProps {
   queryRefs: {
@@ -65,17 +66,16 @@ export default function Directory(props: DirectoryProps) {
     </Fragment>
   );
 }
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return {
-    props: {
-      preloadedQueries: {
-        query: await getPreloadedQuery(preLoadedQuery, {
-          cloudId: ctx.query.cloudId,
-          id: 'issues',
-          jql: ctx.query.jql ?? null,
-          page: ctx.query.page ? parseInt(ctx.query.page.toString()) : 1,
-        }),
-      },
+
+export const getServerSideProps: GetServerSideProps = async (props) => ({
+  props: {
+    preloadedQueries: {
+      query: await fetchQuery(preLoadedQuery, {
+        cloudId: props.query.cloudId,
+        id: 'issues',
+        jql: props.query.jql ?? null,
+        page: props.query.page ? parseInt(props.query.page.toString()) : 1,
+      }),
     },
-  };
-};
+  },
+});

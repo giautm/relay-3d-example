@@ -3,7 +3,7 @@ const loadedModules = new Map();
 const failedModules = new Map();
 const pendingLoaders = new Map();
 
-export default function moduleLoader(name: string) {
+const loader = function moduleLoader(name: string) {
   return {
     getError() {
       return failedModules.get(name);
@@ -43,6 +43,26 @@ export default function moduleLoader(name: string) {
       }
     },
   };
+};
+
+export default loader;
+
+export function matchLoader(name: string) {
+  const l = loader(name);
+  const error = l.getError();
+  if (error) {
+    throw new ModuleLoaderError(name, error);
+  }
+  const jsModule = l.get();
+  if (jsModule != null) {
+    return jsModule;
+  }
+  throw l.load();
+}
+
+export function resetError(name: string) {
+  const l = loader(name);
+  l.resetError();
 }
 
 export function registerLoader(
