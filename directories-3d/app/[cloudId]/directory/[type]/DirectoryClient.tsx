@@ -10,7 +10,7 @@ import {
   TypeBasedDirectoryPageQuery,
 } from '../../../../__generated__/TypeBasedDirectoryPageQuery.graphql';
 import {buildQueryRefs, ServerSideQuery} from '../../../../lib/relay/getServerSideProps';
-import {registerLoader} from '../../../../lib/moduleLoader';
+import {registerClientModules} from '../../../../lib/clientModuleRegistration';
 
 const query = graphql`
   query TypeBasedDirectoryPageQuery(
@@ -65,14 +65,8 @@ export default function DirectoryClient({
   
   // Register modules from server response before hydration
   useEffect(() => {
-    if (preloadedQuery.modules && preloadedQuery.modules.length > 0) {
-      preloadedQuery.modules.forEach((module) => {
-        if (module.endsWith('$normalization.graphql')) {
-          registerLoader(module, () => import(`../../../../__generated__/${module}`));
-        } else {
-          registerLoader(module, () => import(`../../../../components/3d/${module}`));
-        }
-      });
+    if (preloadedQuery.modules) {
+      registerClientModules(preloadedQuery.modules);
     }
   }, [preloadedQuery.modules]);
 

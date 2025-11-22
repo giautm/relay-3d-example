@@ -3,7 +3,7 @@
  * Pre-loads the 3D modules on the server before sending to client
  */
 export async function loadServerModules(modules: string[]): Promise<void> {
-  const IS_SERVER = typeof window === typeof undefined;
+  const IS_SERVER = typeof window === 'undefined';
   if (!IS_SERVER || !modules || modules.length === 0) {
     return;
   }
