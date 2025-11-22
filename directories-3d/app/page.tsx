@@ -1,6 +1,7 @@
 import {Content} from '../components/common/LayoutComponents';
 import {Metadata} from 'next';
 import {FolderIcon} from '@heroicons/react/20/solid';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -87,11 +88,11 @@ export default function Page() {
                   <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-white">
                     <p className="flex-auto">{feature.description}</p>
                     <p className="mt-6">
-                      <a
+                      <Link
                         href={feature.href}
                         className="text-base font-semibold leading-7 text-indigo-600">
                         Visit page <span aria-hidden="true">→</span>
-                      </a>
+                      </Link>
                     </p>
                   </dd>
                 </div>
