@@ -1,8 +1,10 @@
+'use client';
+
 import {Fragment, useEffect, useState} from 'react';
 import {useFragment, useLazyLoadQuery, graphql} from 'react-relay';
 import {Listbox, Transition} from '@headlessui/react';
 import {CheckIcon, ChevronUpDownIcon} from '@heroicons/react/20/solid';
-import {useRouter} from 'next/router';
+import {useRouter, usePathname, useSearchParams} from 'next/navigation';
 import {JiraGenericDirectoryProjectCategoriesFilterCriteria_content$key} from '../../__generated__/JiraGenericDirectoryProjectCategoriesFilterCriteria_content.graphql';
 import {JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery} from '../../__generated__/JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery.graphql';
 
@@ -59,22 +61,27 @@ const JiraGenericDirectoryProjectCategoriesFilterCriteria = ({
   );
 
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  
   useEffect(() => {
-    const url = new URL(document.location.href);
+    const url = new URL(window.location.href);
     if (url.searchParams.get('selectedCategory') !== selectedCategories) {
+      const newSearchParams = new URLSearchParams(searchParams.toString());
       if (selectedCategories.length > 0) {
-        url.searchParams.set('selectedCategory', selectedCategories);
+        newSearchParams.set('selectedCategory', selectedCategories);
       } else if (
         selectedCategories === '' &&
-        url.searchParams.get('selectedCategory') != null
+        newSearchParams.get('selectedCategory') != null
       ) {
-        url.searchParams.delete('selectedCategory');
+        newSearchParams.delete('selectedCategory');
       }
-      if (url.toString() !== document.location.href) {
-        router.push(url);
+      const newUrl = `${pathname}?${newSearchParams.toString()}`;
+      if (newUrl !== `${pathname}?${searchParams.toString()}`) {
+        router.push(newUrl);
       }
     }
-  }, [selectedCategories, router]);
+  }, [selectedCategories, router, pathname, searchParams]);
   return (
     <div>
       <Listbox value={selectedCategories} onChange={setSelectedCategories}>

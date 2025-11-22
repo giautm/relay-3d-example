@@ -1,3 +1,5 @@
+'use client';
+
 import {Fragment, useEffect, useState} from 'react';
 import {useFragment, useLazyLoadQuery, graphql} from 'react-relay';
 import {Listbox, Transition} from '@headlessui/react';
@@ -6,7 +8,7 @@ import {
   ChevronUpDownIcon,
   XCircleIcon,
 } from '@heroicons/react/20/solid';
-import {useRouter} from 'next/router';
+import {useRouter, usePathname, useSearchParams} from 'next/navigation';
 import {JiraGenericDirectoryProjectTypesFilterCriteria_content$key} from '../../__generated__/JiraGenericDirectoryProjectTypesFilterCriteria_content.graphql';
 import {JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery} from '../../__generated__/JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery.graphql';
 
@@ -59,8 +61,11 @@ const JiraGenericDirectoryProjectTypesFilterCriteria = ({
   );
 
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  
   useEffect(() => {
-    const url = new URL(document.location.href);
+    const url = new URL(window.location.href);
     const selectedProjectTypeParam =
       selectedProjectTypes
         ?.map((projectTypeId) => {
@@ -72,19 +77,21 @@ const JiraGenericDirectoryProjectTypesFilterCriteria = ({
     if (
       url.searchParams.get('selectedProjectType') !== selectedProjectTypeParam
     ) {
+      const newSearchParams = new URLSearchParams(searchParams.toString());
       if (selectedProjectTypeParam.length > 0) {
-        url.searchParams.set('selectedProjectType', selectedProjectTypeParam);
+        newSearchParams.set('selectedProjectType', selectedProjectTypeParam);
       } else if (
         selectedProjectTypeParam === '' &&
-        url.searchParams.get('selectedProjectType') != null
+        newSearchParams.get('selectedProjectType') != null
       ) {
-        url.searchParams.delete('selectedProjectType');
+        newSearchParams.delete('selectedProjectType');
       }
-      if (url.toString() !== document.location.href) {
-        router.push(url);
+      const newUrl = `${pathname}?${newSearchParams.toString()}`;
+      if (newUrl !== `${pathname}?${searchParams.toString()}`) {
+        router.push(newUrl);
       }
     }
-  }, [selectedProjectTypes, router]);
+  }, [selectedProjectTypes, router, pathname, searchParams]);
 
   return (
     <div>

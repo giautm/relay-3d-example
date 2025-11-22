@@ -1,5 +1,7 @@
+'use client';
+
 import {useState, useEffect} from 'react';
-import {useRouter} from 'next/router';
+import {usePathname, useSearchParams} from 'next/navigation';
 import Link from 'next/link';
 import {useFragment, graphql} from 'react-relay';
 
@@ -9,14 +11,12 @@ import {
 } from '@heroicons/react/20/solid';
 import {JiraDirectoryDefaultResultHeader_content$key} from '../../__generated__/JiraDirectoryDefaultResultHeader_content.graphql';
 
-const getUrl = (urlPath: string, sortKey: string, sortDirection: string) => {
-  let url;
+const getUrl = (pathname: string, currentSearchParams: URLSearchParams, sortKey: string, sortDirection: string) => {
+  const url = new URL('https://temp.com' + pathname);
+  currentSearchParams.forEach((value, key) => {
+    url.searchParams.set(key, value);
+  });
   let hasUpdates = false;
-  try {
-    url = new URL('https://temp.com' + urlPath);
-  } catch (e) {
-    url = new URL('https://temp.com');
-  }
   if (url.searchParams.get('sortKey') !== sortKey) {
     url.searchParams.set('sortKey', sortKey);
     hasUpdates = true;
@@ -47,21 +47,22 @@ const JiraDirectoryDefaultResultHeader = ({
     `,
     content,
   );
-  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [sortFieldValue, setSortFieldValue] = useState({
-    sortKey: router.query.sortKey?.toString() ?? '',
-    sortDirection: router.query.sortOrder?.toString() ?? '',
+    sortKey: searchParams.get('sortKey') ?? '',
+    sortDirection: searchParams.get('sortOrder') ?? '',
   });
   useEffect(() => {
     const [sortKey, sortDirection] = [
-      router.query.sortKey?.toString() ?? 'name',
-      router.query.sortOrder?.toString() ?? 'ASC',
+      searchParams.get('sortKey') ?? 'name',
+      searchParams.get('sortOrder') ?? 'ASC',
     ];
     setSortFieldValue({
       sortKey,
       sortDirection,
     });
-  }, [router.query, setSortFieldValue]);
+  }, [searchParams, setSortFieldValue]);
   return (
     <div className="flex items-left justify-between whitespace-nowrap">
       <b>{data?.title}</b>
@@ -71,8 +72,8 @@ const JiraDirectoryDefaultResultHeader = ({
           <Link
             href={
               sortFieldValue.sortKey === data?.sortKey
-                ? getUrl(router.asPath, data?.sortKey ?? '', 'ASC')
-                : getUrl(router.asPath, data?.sortKey ?? '', 'DESC')
+                ? getUrl(pathname, searchParams, data?.sortKey ?? '', 'ASC')
+                : getUrl(pathname, searchParams, data?.sortKey ?? '', 'DESC')
             }
             className="w-5 flex items-center">
             <ArrowUpCircleIcon
@@ -88,8 +89,8 @@ const JiraDirectoryDefaultResultHeader = ({
           <Link
             href={
               sortFieldValue.sortKey === data?.sortKey
-                ? getUrl(router.asPath, data.sortKey ?? '', 'DESC')
-                : getUrl(router.asPath, data.sortKey ?? '', 'ASC')
+                ? getUrl(pathname, searchParams, data.sortKey ?? '', 'DESC')
+                : getUrl(pathname, searchParams, data.sortKey ?? '', 'ASC')
             }
             className="w-5 flex items-center">
             <ArrowDownCircleIcon
