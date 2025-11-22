@@ -1,13 +1,14 @@
 import Nav from '../../components/common/Nav';
 import {Content} from '../../components/common/LayoutComponents';
-import Head from 'next/head';
+import {Metadata} from 'next';
+
+export const metadata: Metadata = {
+  title: 'Unused',
+};
 
 export default function CloudId() {
   return (
     <>
-      <Head>
-        <title>Unused</title>
-      </Head>
       <Nav />
       <Content>
         <p>Unused page</p>

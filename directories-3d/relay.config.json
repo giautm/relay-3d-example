@@ -6,6 +6,6 @@
   "language": "typescript",
   "persistConfig": {
     "algorithm": "SHA256",
-    "file": "./pages/api/persisted_queries.json"
+    "file": "./lib/persisted_queries.json"
   }
 }
