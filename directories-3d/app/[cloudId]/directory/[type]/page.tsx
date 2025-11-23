@@ -1,6 +1,6 @@
-import {fetchQuery} from '../../../../lib/relay/getServerSideProps';
-import {loadServerModules} from '../../../../lib/relay/serverModuleLoader';
-import preLoadedQuery from '../../../../__generated__/TypeBasedDirectoryPageQuery.graphql';
+import {fetchQuery} from '@/lib/relay/getServerSideProps';
+import {loadServerModules} from '@/lib/relay/serverModuleLoader';
+import preLoadedQuery from '@/__generated__/TypeBasedDirectoryPageQuery.graphql';
 import DirectoryClient from './DirectoryClient';
 
 export default async function Directory({

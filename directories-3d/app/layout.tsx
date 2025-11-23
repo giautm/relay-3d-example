@@ -1,5 +1,5 @@
-import '../styles/globals.css';
-import {Layout} from '../components/common/LayoutComponents';
+import '@/styles/globals.css';
+import {Layout} from '@/components/common/LayoutComponents';
 import {ThemeProvider} from 'next-themes';
 import {RelayProvider} from './RelayProvider';
 

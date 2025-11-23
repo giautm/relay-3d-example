@@ -3,13 +3,13 @@
 import {Fragment, useMemo} from 'react';
 import {graphql, usePreloadedQuery, useRelayEnvironment} from 'react-relay';
 
-import RelayMatchContainer from '../../../../components/common/RelayMatchContainer';
-import {Content} from '../../../../components/common/LayoutComponents';
-import Nav from '../../../../components/common/Nav';
+import RelayMatchContainer from '@/components/common/RelayMatchContainer';
+import {Content} from '@/components/common/LayoutComponents';
+import Nav from '@/components/common/Nav';
 import {
   TypeBasedDirectoryPageQuery,
-} from '../../../../__generated__/TypeBasedDirectoryPageQuery.graphql';
-import {buildQueryRefs, ServerSideQuery} from '../../../../lib/relay/getServerSideProps';
+} from '@/__generated__/TypeBasedDirectoryPageQuery.graphql';
+import {buildQueryRefs, ServerSideQuery} from '@/lib/relay/getServerSideProps';
 
 const query = graphql`
   query TypeBasedDirectoryPageQuery(

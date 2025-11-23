@@ -4,13 +4,13 @@ import {useState, useEffect} from 'react';
 import {usePathname, useSearchParams} from 'next/navigation';
 import Link from 'next/link';
 import {useFragment, graphql} from 'react-relay';
-import {getSortInfoFromJql, getUrlWithNewJql} from '../../lib/utils';
+import {getSortInfoFromJql, getUrlWithNewJql} from '@/lib/utils';
 
 import {
   ArrowUpCircleIcon,
   ArrowDownCircleIcon,
 } from '@heroicons/react/20/solid';
-import {JiraDirectoryIssueResultHeader_content$key} from '../../__generated__/JiraDirectoryIssueResultHeader_content.graphql';
+import {JiraDirectoryIssueResultHeader_content$key} from '@/__generated__/JiraDirectoryIssueResultHeader_content.graphql';
 
 const JiraDirectoryIssueResultHeader = ({
   content,

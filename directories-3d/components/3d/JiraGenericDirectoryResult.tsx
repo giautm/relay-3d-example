@@ -1,8 +1,8 @@
 import {useFragment, graphql} from 'react-relay';
 import {DocumentMagnifyingGlassIcon} from '@heroicons/react/20/solid';
-import RelayMatchContainer from '../common/RelayMatchContainer';
-import {JiraGenericDirectoryResults_content$key} from '../../__generated__/JiraGenericDirectoryResults_content.graphql';
-import JiraDirectoryResultPagination from '../common/JiraDirectoryResultPagination';
+import RelayMatchContainer from '@/components/common/RelayMatchContainer';
+import {JiraGenericDirectoryResults_content$key} from '@/__generated__/JiraGenericDirectoryResults_content.graphql';
+import JiraDirectoryResultPagination from '@/components/common/JiraDirectoryResultPagination';
 
 const JiraGenericDirectoryResult = ({
   content,

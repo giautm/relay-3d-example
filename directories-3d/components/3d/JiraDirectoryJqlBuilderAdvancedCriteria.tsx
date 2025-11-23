@@ -4,7 +4,7 @@ import {useState, useEffect, ChangeEvent} from 'react';
 import {useRouter, usePathname, useSearchParams} from 'next/navigation';
 import {useFragment, graphql} from 'react-relay';
 import {MagnifyingGlassIcon} from '@heroicons/react/20/solid';
-import {JiraDirectoryJqlBuilderAdvancedCriteria_content$key} from '../../__generated__/JiraDirectoryJqlBuilderAdvancedCriteria_content.graphql';
+import {JiraDirectoryJqlBuilderAdvancedCriteria_content$key} from '@/__generated__/JiraDirectoryJqlBuilderAdvancedCriteria_content.graphql';
 
 const JiraDirectoryJqlBuilderAdvancedCriteria = ({
   content,

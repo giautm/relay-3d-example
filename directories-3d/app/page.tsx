@@ -1,4 +1,4 @@
-import {Content} from '../components/common/LayoutComponents';
+import {Content} from '@/components/common/LayoutComponents';
 import {Metadata} from 'next';
 import {FolderIcon} from '@heroicons/react/20/solid';
 import Link from 'next/link';

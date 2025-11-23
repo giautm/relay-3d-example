@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 import {useRouter, usePathname, useSearchParams} from 'next/navigation';
 import {useFragment, graphql} from 'react-relay';
 import {MagnifyingGlassIcon} from '@heroicons/react/20/solid';
-import {JiraDirectorySearchTextFilterCriteria_content$key} from '../../__generated__/JiraDirectorySearchTextFilterCriteria_content.graphql';
+import {JiraDirectorySearchTextFilterCriteria_content$key} from '@/__generated__/JiraDirectorySearchTextFilterCriteria_content.graphql';
 
 const JiraDirectorySearchTextFilterCriteria = ({
   content,

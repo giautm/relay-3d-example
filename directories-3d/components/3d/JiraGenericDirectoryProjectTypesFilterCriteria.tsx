@@ -9,8 +9,8 @@ import {
   XCircleIcon,
 } from '@heroicons/react/20/solid';
 import {useRouter, usePathname, useSearchParams} from 'next/navigation';
-import {JiraGenericDirectoryProjectTypesFilterCriteria_content$key} from '../../__generated__/JiraGenericDirectoryProjectTypesFilterCriteria_content.graphql';
-import {JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery} from '../../__generated__/JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery.graphql';
+import {JiraGenericDirectoryProjectTypesFilterCriteria_content$key} from '@/__generated__/JiraGenericDirectoryProjectTypesFilterCriteria_content.graphql';
+import {JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery} from '@/__generated__/JiraGenericDirectoryProjectTypesFilterCriteriaPickerQuery.graphql';
 
 const JiraGenericDirectoryProjectTypesFilterCriteria = ({
   content,

@@ -4,13 +4,13 @@ import {GraphQLScalarType} from 'graphql';
 import {connectionFromArray, type ConnectionArguments} from 'graphql-relay';
 
 // @ts-ignore Cannot find module or its corresponding type declarations
-import typeDefs from '../../../lib/schema/schema.graphql';
-import {PROJECT_DIRECTORY_CONFIG} from '../../../lib/mocks/projectsSearchData';
-import {ISSUE_DIRECTORY_CONFIG} from '../../../lib/mocks/issueSearchData';
-import {type Issue} from '../../../lib/mocks/types';
-import {getSortInfoFromJql} from '../../../lib/utils';
-import {projectFilter, issueSorter} from '../../../lib/schema/utils';
-import persistedQueries from '../../../lib/persisted_queries.json';
+import typeDefs from '@/lib/schema/schema.graphql';
+import {PROJECT_DIRECTORY_CONFIG} from '@/lib/mocks/projectsSearchData';
+import {ISSUE_DIRECTORY_CONFIG} from '@/lib/mocks/issueSearchData';
+import {type Issue} from '@/lib/mocks/types';
+import {getSortInfoFromJql} from '@/lib/utils';
+import {projectFilter, issueSorter} from '@/lib/schema/utils';
+import persistedQueries from '@/lib/persisted_queries.json';
 
 const JSDependencyScalar = new GraphQLScalarType({
   name: 'JSDependency',

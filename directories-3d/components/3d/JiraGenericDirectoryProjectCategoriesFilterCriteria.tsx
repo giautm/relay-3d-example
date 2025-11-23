@@ -5,8 +5,8 @@ import {useFragment, useLazyLoadQuery, graphql} from 'react-relay';
 import {Listbox, Transition} from '@headlessui/react';
 import {CheckIcon, ChevronUpDownIcon} from '@heroicons/react/20/solid';
 import {useRouter, usePathname, useSearchParams} from 'next/navigation';
-import {JiraGenericDirectoryProjectCategoriesFilterCriteria_content$key} from '../../__generated__/JiraGenericDirectoryProjectCategoriesFilterCriteria_content.graphql';
-import {JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery} from '../../__generated__/JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery.graphql';
+import {JiraGenericDirectoryProjectCategoriesFilterCriteria_content$key} from '@/__generated__/JiraGenericDirectoryProjectCategoriesFilterCriteria_content.graphql';
+import {JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery} from '@/__generated__/JiraGenericDirectoryProjectCategoriesFilterCriteriaPickerQuery.graphql';
 
 const JiraGenericDirectoryProjectCategoriesFilterCriteria = ({
   content,

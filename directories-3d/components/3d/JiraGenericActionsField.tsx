@@ -1,6 +1,6 @@
 import {Fragment} from 'react';
 import {useFragment, graphql} from 'react-relay';
-import {JiraGenericActionsField_content$key} from '../../__generated__/JiraGenericActionsField_content.graphql';
+import {JiraGenericActionsField_content$key} from '@/__generated__/JiraGenericActionsField_content.graphql';
 import {EllipsisHorizontalIcon} from '@heroicons/react/20/solid';
 import {Menu, Transition} from '@headlessui/react';
 

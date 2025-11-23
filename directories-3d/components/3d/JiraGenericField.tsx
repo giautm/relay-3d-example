@@ -1,5 +1,5 @@
 import {useFragment, graphql} from 'react-relay';
-import {JiraGenericField_content$key} from '../../__generated__/JiraGenericField_content.graphql';
+import {JiraGenericField_content$key} from '@/__generated__/JiraGenericField_content.graphql';
 
 const JiraGenericField = ({
   content,

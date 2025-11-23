@@ -1,8 +1,8 @@
 import {useFragment, graphql} from 'react-relay';
-import {Title} from '../common/LayoutComponents';
-import RelayMatchContainer from '../common/RelayMatchContainer';
+import {Title} from '@/components/common/LayoutComponents';
+import RelayMatchContainer from '@/components/common/RelayMatchContainer';
 import Head from 'next/head';
-import {JiraIssueDirectory_directory$key} from '../../__generated__/JiraIssueDirectory_directory.graphql';
+import {JiraIssueDirectory_directory$key} from '@/__generated__/JiraIssueDirectory_directory.graphql';
 import {Disclosure} from '@headlessui/react';
 import {ChevronUpIcon} from '@heroicons/react/20/solid';
 

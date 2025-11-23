@@ -12,9 +12,9 @@ export async function loadServerModules(modules: string[]): Promise<void> {
   const loadPromises = modules.map(async (module) => {
     try {
       if (module.endsWith('$normalization.graphql')) {
-        await import(`../../__generated__/${module}`);
+        await import(`@/__generated__/${module}`);
       } else {
-        await import(`../../components/3d/${module}`);
+        await import(`@/components/3d/${module}`);
       }
     } catch (error) {
       console.error(`Failed to load module ${module} on server:`, error);

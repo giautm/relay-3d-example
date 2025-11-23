@@ -1,5 +1,5 @@
-import Nav from '../../components/common/Nav';
-import {Content} from '../../components/common/LayoutComponents';
+import Nav from '@/components/common/Nav';
+import {Content} from '@/components/common/LayoutComponents';
 import {Metadata} from 'next';
 
 export const metadata: Metadata = {

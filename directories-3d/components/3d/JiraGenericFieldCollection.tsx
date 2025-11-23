@@ -1,6 +1,6 @@
 import {useFragment, graphql} from 'react-relay';
-import {JiraGenericFieldCollection_content$key} from '../../__generated__/JiraGenericFieldCollection_content.graphql';
-import RelayMatchContainer from '../common/RelayMatchContainer';
+import {JiraGenericFieldCollection_content$key} from '@/__generated__/JiraGenericFieldCollection_content.graphql';
+import RelayMatchContainer from '@/components/common/RelayMatchContainer';
 
 const JiraGenericFieldCollection = ({
   content,

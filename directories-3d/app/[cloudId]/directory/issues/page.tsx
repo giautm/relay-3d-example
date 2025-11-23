@@ -1,6 +1,6 @@
-import {fetchQuery} from '../../../../lib/relay/getServerSideProps';
-import {loadServerModules} from '../../../../lib/relay/serverModuleLoader';
-import preLoadedQuery from '../../../../__generated__/issuesPageQuery.graphql';
+import {fetchQuery} from '@/lib/relay/getServerSideProps';
+import {loadServerModules} from '@/lib/relay/serverModuleLoader';
+import preLoadedQuery from '@/__generated__/issuesPageQuery.graphql';
 import IssuesClient from './IssuesClient';
 
 export default async function Issues({

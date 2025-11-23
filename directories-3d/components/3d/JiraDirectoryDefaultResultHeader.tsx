@@ -9,7 +9,7 @@ import {
   ArrowUpCircleIcon,
   ArrowDownCircleIcon,
 } from '@heroicons/react/20/solid';
-import {JiraDirectoryDefaultResultHeader_content$key} from '../../__generated__/JiraDirectoryDefaultResultHeader_content.graphql';
+import {JiraDirectoryDefaultResultHeader_content$key} from '@/__generated__/JiraDirectoryDefaultResultHeader_content.graphql';
 
 const getUrl = (pathname: string, currentSearchParams: URLSearchParams, sortKey: string, sortDirection: string) => {
   const url = new URL('https://temp.com' + pathname);

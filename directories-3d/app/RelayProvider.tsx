@@ -2,7 +2,7 @@
 
 import {ReactRelayContext} from 'react-relay';
 import {Suspense, useMemo} from 'react';
-import {createEnvironment} from '../lib/relay/environment';
+import {createEnvironment} from '@/lib/relay/environment';
 
 export function RelayProvider({children}: {children: React.ReactNode}) {
   const value = useMemo(
