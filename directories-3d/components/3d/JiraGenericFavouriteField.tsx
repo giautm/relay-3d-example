@@ -1,6 +1,6 @@
 import {useCallback} from 'react';
 import {useFragment, graphql} from 'react-relay';
-import {JiraGenericFavouriteField_content$key} from '../../__generated__/JiraGenericFavouriteField_content.graphql';
+import {JiraGenericFavouriteField_content$key} from '@/__generated__/JiraGenericFavouriteField_content.graphql';
 import {StarIcon} from '@heroicons/react/20/solid';
 
 const JiraGenericFavouriteField = ({

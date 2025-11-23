@@ -1,8 +1,10 @@
+'use client';
+
 import {useState, useEffect, ChangeEvent} from 'react';
-import {useRouter} from 'next/router';
+import {useRouter, usePathname, useSearchParams} from 'next/navigation';
 import {useFragment, graphql} from 'react-relay';
 import {MagnifyingGlassIcon} from '@heroicons/react/20/solid';
-import {JiraDirectoryJqlBuilderAdvancedCriteria_content$key} from '../../__generated__/JiraDirectoryJqlBuilderAdvancedCriteria_content.graphql';
+import {JiraDirectoryJqlBuilderAdvancedCriteria_content$key} from '@/__generated__/JiraDirectoryJqlBuilderAdvancedCriteria_content.graphql';
 
 const JiraDirectoryJqlBuilderAdvancedCriteria = ({
   content,
@@ -24,13 +26,15 @@ const JiraDirectoryJqlBuilderAdvancedCriteria = ({
   const [userChanged, setUserChanged] = useState(false);
 
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const urlJql = router.query.jql?.toString() || '';
+    const urlJql = searchParams.get('jql') || '';
     setJql(urlJql);
     setDebouncedJql(urlJql);
     setUserChanged(false);
-  }, [router.query.jql]);
+  }, [searchParams]);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -43,14 +47,14 @@ const JiraDirectoryJqlBuilderAdvancedCriteria = ({
   }, [jql]);
 
   useEffect(() => {
-    const url = new URL(document.location.href);
-    const currentJql = url.searchParams.get('jql');
+    const currentJql = searchParams.get('jql');
 
     if (userChanged && currentJql !== debouncedJql && debouncedJql !== null) {
-      url.searchParams.set('jql', debouncedJql);
-      router.push(url);
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.set('jql', debouncedJql);
+      router.push(`${pathname}?${newSearchParams.toString()}`);
     }
-  }, [debouncedJql, router, userChanged]);
+  }, [debouncedJql, router, pathname, searchParams, userChanged]);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setJql(event.target.value);

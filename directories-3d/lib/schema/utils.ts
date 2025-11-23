@@ -1,4 +1,4 @@
-import {type Issue} from '../mocks/types';
+import {type Issue} from '@/lib/mocks/types';
 export function projectFilter(
   hasSearchText: boolean,
   hasSelectedCategory: boolean,

@@ -5,7 +5,7 @@ import {
   Store,
 } from 'relay-runtime';
 
-import moduleLoader from '../moduleLoader';
+import moduleLoader from '@/lib/moduleLoader';
 import {createNetwork} from './network';
 
 const IS_SERVER = typeof window === typeof undefined;

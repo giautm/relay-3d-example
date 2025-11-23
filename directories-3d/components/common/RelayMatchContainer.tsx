@@ -6,9 +6,9 @@ import {
   matchLoader,
   resetError as resetModuleError,
   ModuleLoaderError,
-} from '../../lib/moduleLoader';
-import ErrorBoundary from '../common/ErrorBoundary';
-import {Button} from '../common/LayoutComponents';
+} from '@/lib/moduleLoader';
+import ErrorBoundary from '@/components/common/ErrorBoundary';
+import {Button} from '@/components/common/LayoutComponents';
 
 export default function RelayMatchContainer({
   match,

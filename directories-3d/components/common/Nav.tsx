@@ -1,6 +1,8 @@
+'use client';
+
 import {useState, useEffect} from 'react';
 import Link from 'next/link';
-import {useRouter} from 'next/router';
+import {usePathname, useParams} from 'next/navigation';
 import Image from 'next/image';
 import {Bars3Icon, ArrowTopRightOnSquareIcon} from '@heroicons/react/20/solid';
 import {useTheme} from 'next-themes';
@@ -8,11 +10,15 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const router = useRouter();
-  const [currentRoute, setCurrentRoute] = useState(router.asPath);
+  const pathname = usePathname();
+  const params = useParams();
+  const [currentRoute, setCurrentRoute] = useState(pathname);
   useEffect(() => {
-    setCurrentRoute(router.asPath);
-  }, [router.asPath]);
+    setCurrentRoute(pathname);
+  }, [pathname]);
+
+  const cloudId = params.cloudId as string;
+  const type = params.type as string;
 
   return (
     <header className="bg-white dark:bg-gray-900 shadow">
@@ -60,14 +66,10 @@ export default function Nav() {
               </li>
               <li>
                 <Link
-                  href={{
-                    pathname: '/[cloudId]/directory/[type]',
-                    query: {cloudId: 'normal-user'},
-                  }}
-                  as="/normal-user/directory/projects"
+                  href="/normal-user/directory/projects"
                   className={`${
-                    router.query.cloudId === 'normal-user' &&
-                    router.query.type === 'projects'
+                    cloudId === 'normal-user' &&
+                    type === 'projects'
                       ? ' text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
                       : ' text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
                   } block py-2 pr-4 pl-3`}>
@@ -76,14 +78,10 @@ export default function Nav() {
               </li>
               <li>
                 <Link
-                  href={{
-                    pathname: '/[cloudId]/directory/[type]',
-                    query: {cloudId: 'admin-user'},
-                  }}
-                  as="/admin-user/directory/projects"
+                  href="/admin-user/directory/projects"
                   className={`${
-                    router.query.cloudId === 'admin-user' &&
-                    router.query.type === 'projects'
+                    cloudId === 'admin-user' &&
+                    type === 'projects'
                       ? ' text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
                       : ' text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
                   } block py-2 pr-4 pl-3`}>
@@ -92,14 +90,10 @@ export default function Nav() {
               </li>
               <li>
                 <Link
-                  href={{
-                    pathname: '/[cloudId]/directory/[type]',
-                    query: {cloudId: 'no-categories'},
-                  }}
-                  as="/no-categories/directory/projects"
+                  href="/no-categories/directory/projects"
                   className={`${
-                    router.query.cloudId === 'no-categories' &&
-                    router.query.type === 'projects'
+                    cloudId === 'no-categories' &&
+                    type === 'projects'
                       ? ' text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
                       : ' text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
                   } block py-2 pr-4 pl-3`}>
@@ -108,14 +102,10 @@ export default function Nav() {
               </li>
               <li>
                 <Link
-                  href={{
-                    pathname: '/[cloudId]/directory/[type]',
-                    query: {cloudId: 'only-software'},
-                  }}
-                  as="/only-software/directory/projects"
+                  href="/only-software/directory/projects"
                   className={`${
-                    router.query.cloudId === 'only-software' &&
-                    router.query.type === 'projects'
+                    cloudId === 'only-software' &&
+                    type === 'projects'
                       ? ' text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
                       : ' text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
                   } block py-2 pr-4 pl-3`}>
@@ -124,14 +114,10 @@ export default function Nav() {
               </li>
               <li>
                 <Link
-                  href={{
-                    pathname: '/[cloudId]/directory/[type]',
-                    query: {cloudId: 'anonymous-user'},
-                  }}
-                  as="/anonymous-user/directory/projects"
+                  href="/anonymous-user/directory/projects"
                   className={`${
-                    router.query.cloudId === 'anonymous-user' &&
-                    router.query.type === 'projects'
+                    cloudId === 'anonymous-user' &&
+                    type === 'projects'
                       ? ' text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
                       : ' text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
                   } block py-2 pr-4 pl-3`}>
@@ -140,14 +126,10 @@ export default function Nav() {
               </li>
               <li>
                 <Link
-                  href={{
-                    pathname: '/[cloudId]/directory/issues',
-                    query: {cloudId: 'normal-user'},
-                  }}
-                  as="/normal-user/directory/issues"
+                  href="/normal-user/directory/issues"
                   className={`${
-                    router.query.cloudId === 'normal-user' &&
-                    router.pathname.indexOf('issues') > 0
+                    cloudId === 'normal-user' &&
+                    pathname?.indexOf('issues') > 0
                       ? ' text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'
                       : ' text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'
                   } block py-2 pr-4 pl-3`}>

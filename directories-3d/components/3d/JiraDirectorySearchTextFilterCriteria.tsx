@@ -1,8 +1,10 @@
+'use client';
+
 import {useState, useEffect} from 'react';
-import {useRouter} from 'next/router';
+import {useRouter, usePathname, useSearchParams} from 'next/navigation';
 import {useFragment, graphql} from 'react-relay';
 import {MagnifyingGlassIcon} from '@heroicons/react/20/solid';
-import {JiraDirectorySearchTextFilterCriteria_content$key} from '../../__generated__/JiraDirectorySearchTextFilterCriteria_content.graphql';
+import {JiraDirectorySearchTextFilterCriteria_content$key} from '@/__generated__/JiraDirectorySearchTextFilterCriteria_content.graphql';
 
 const JiraDirectorySearchTextFilterCriteria = ({
   content,
@@ -33,16 +35,20 @@ const JiraDirectorySearchTextFilterCriteria = ({
   }, [keyword]);
 
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  
   useEffect(() => {
-    const url = new URL(document.location.href);
+    const url = new URL(window.location.href);
     if (
       url.searchParams.get('contains') !== debouncedKeyword &&
       debouncedKeyword !== null
     ) {
-      url.searchParams.set('contains', debouncedKeyword as string);
-      router.push(url);
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.set('contains', debouncedKeyword as string);
+      router.push(`${pathname}?${newSearchParams.toString()}`);
     }
-  }, [debouncedKeyword, router]);
+  }, [debouncedKeyword, router, pathname, searchParams]);
 
   return (
     <div className="relative">

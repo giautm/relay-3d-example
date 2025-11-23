@@ -1,5 +1,5 @@
 import {useFragment, graphql} from 'react-relay';
-import {JiraGenericDirectoryCreateItem_directory$key} from '../../__generated__/JiraGenericDirectoryCreateItem_directory.graphql';
+import {JiraGenericDirectoryCreateItem_directory$key} from '@/__generated__/JiraGenericDirectoryCreateItem_directory.graphql';
 
 const JiraGenericDirectoryCreateItem = ({
   directory,
