@@ -1,27 +1,27 @@
 /**
  * Server-side module loader for Server 3D
- * Pre-loads the 3D modules on the server before sending to client
- * This ensures modules are bundled and available for SSR
+ * 
+ * Note: In Next.js App Router with React Server Components, client components
+ * (those marked with 'use client') cannot be dynamically imported on the server.
+ * The Relay 3D modules use React hooks and context which require client-side execution.
+ * 
+ * The proper implementation is to:
+ * 1. Server fetches data and module list
+ * 2. Server passes data and module list to client
+ * 3. Client registers and renders the 3D components
+ * 
+ * This function is kept for API compatibility but is effectively a no-op.
  */
 export async function loadServerModules(modules: string[]): Promise<void> {
-  const IS_SERVER = typeof window === 'undefined';
-  if (!IS_SERVER || !modules || modules.length === 0) {
-    return;
-  }
+  // Server-side module loading is not possible with client components
+  // Modules will be registered on the client via the network layer
+  return Promise.resolve();
+}
 
-  // Pre-load all modules on the server to ensure they're included in the SSR bundle
-  const loadPromises = modules.map(async (module) => {
-    try {
-      if (module.endsWith('$normalization.graphql')) {
-        await import(`@/__generated__/${module}`);
-      } else {
-        await import(`@/components/3d/${module}`);
-      }
-    } catch (error) {
-      console.error(`Failed to load module ${module} on server:`, error);
-      // Don't throw - let the client handle the error if the module is needed
-    }
-  });
-
-  await Promise.all(loadPromises);
+/**
+ * Get a module from the server cache
+ * Returns undefined since modules are not cached on the server
+ */
+export function getServerModule(moduleName: string): any {
+  return undefined;
 }

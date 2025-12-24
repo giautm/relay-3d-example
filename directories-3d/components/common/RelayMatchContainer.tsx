@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 //@ts-ignore
 import MatchContainer from 'react-relay/lib/relay-hooks/MatchContainer';
